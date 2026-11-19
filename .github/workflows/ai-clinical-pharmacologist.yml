@@ -1,0 +1,24 @@
+name: AI Clinical Pharmacologist
+
+on:
+  push:
+    paths:
+      - "ai-clinical-pharmacologist/**"
+      - ".github/workflows/ai-clinical-pharmacologist.yml"
+  pull_request:
+    paths:
+      - "ai-clinical-pharmacologist/**"
+      - ".github/workflows/ai-clinical-pharmacologist.yml"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-clinical-pharmacologist
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run check
